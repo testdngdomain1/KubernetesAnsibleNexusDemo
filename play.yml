@@ -3,9 +3,4 @@
   become: true
   tasks:
   - name: Start container
-    docker_container:
-      name: demo
-      image: "bijoyashis/demo:{DOCKER_TAG}"
-      state: started
-      published_ports:
-          - 0.0.0.0:8080:8080
+    command: docker run -d --name=myapp -p 8080:8080 bijoyashis/demo:{DOCKER_TAG}

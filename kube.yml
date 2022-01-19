@@ -1,0 +1,10 @@
+---
+- hosts: kubernetes
+  user: root
+  tasks:
+  - name: Install Docker
+    command: yum install docker -y
+  - name: Start Docker Service
+    command: service docker start
+  - name: Start Kubernetes Service
+    command: kubectl apply -f kube-deploy.yml
