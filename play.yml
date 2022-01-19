@@ -1,0 +1,22 @@
+---
+- hosts: dev
+  become: true
+  tasks:
+  - name: Install Docker
+    yum:
+      name: docker
+      state: present
+  - name: Start Docker Service
+    service:
+      name: docker
+      state: started
+      enabled: yes
+  - name: Provide execution permission to docker sock
+    command: chmod 777 /var/run/docker.sock
+  - name: Start container
+    docker_container:
+      name: demo
+      image: "bijoyashis/demo:{DOCKER_TAG}"
+      state: started
+      published_ports:
+          - 0.0.0.0:8080:8080
