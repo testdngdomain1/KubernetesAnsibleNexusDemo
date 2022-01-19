@@ -2,6 +2,10 @@
 - hosts: dev
   become: true
   tasks:
+  - name: Install python pip
+      yum:
+        name: python-pip
+        state: present
   - name: Install Docker
     yum:
       name: docker
@@ -11,6 +15,10 @@
       name: docker
       state: started
       enabled: yes
+  - name: Install docker-py python module
+      pip:
+        name: docker-py
+        state: present
   - name: Provide execution permission to docker sock
     command: chmod 777 /var/run/docker.sock
   - name: Start container
