@@ -8,4 +8,4 @@
   - name: Start Docker Service
     command: service docker start
   - name: Start Kubernetes Service
-    command: kubectl apply -f kube-deploy.yml
+    command: kubectl apply -f .
