@@ -1,6 +1,0 @@
----
-- hosts: dev
-  become: true
-  tasks:
-  - name: Start container
-    command: docker run -d --name=myapp -p 8080:8080 bijoyashis/demo:{DOCKER_TAG}
